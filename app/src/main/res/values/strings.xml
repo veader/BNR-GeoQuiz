@@ -3,4 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="true_button_string">True</string>
+    <string name="false_button_string">False</string>
+    <string name="question_text_string">St Jude is located in Sylmar?</string>
+    <string name="toast_correct_string">Correct!</string>
+    <string name="toast_incorrect_string">Incorrect! :(</string>
 </resources>
