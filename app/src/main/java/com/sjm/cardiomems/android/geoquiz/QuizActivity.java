@@ -13,10 +13,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_CHEAT_BOOL = "cheat_bool";
     private static final int REQUEST_CODE_CHEAT = 0;
 
     private TextView mQuestionTextView;
@@ -32,6 +36,8 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_asia, true),
     };
 
+    private HashMap<Integer, Boolean> cheatedQuestions = new HashMap<Integer, Boolean>();
+
     // ======================================================================
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT_BOOL, false);
         }
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
@@ -102,6 +109,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putBoolean(KEY_CHEAT_BOOL, mIsCheater);
     }
 
     @Override
@@ -115,6 +123,9 @@ public class QuizActivity extends AppCompatActivity {
                 return;
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
+            if (mIsCheater) {
+                cheatedQuestions.put(new Integer(mCurrentIndex), new Boolean(true));
+            }
         }
     }
 
@@ -145,7 +156,12 @@ public class QuizActivity extends AppCompatActivity {
 
         Question q = mQuestionBank[mCurrentIndex];
 
-        if (mIsCheater) {
+        Boolean pastCheat = cheatedQuestions.get(new Integer(mCurrentIndex));
+        if (pastCheat == null) {
+            pastCheat = new Boolean(false);
+        }
+
+        if (mIsCheater || pastCheat) {
             messageResId = R.string.toast_judgment_string;
         } else {
             if (q.isAnswerTrue() == userPressedTrue) {
