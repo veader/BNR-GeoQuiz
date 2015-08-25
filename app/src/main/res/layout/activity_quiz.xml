@@ -14,7 +14,8 @@
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp" />
+        android:padding="24dp"
+        tools:text="Question" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -34,6 +35,13 @@
             />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/cheat_button"
+        android:text="@string/cheat_button_string"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,12 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_left"
+            android:contentDescription="@string/previous_button_string"
             />
         <ImageButton
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_right"
+            android:contentDescription="@string/next_button_string"
             />
 
     </LinearLayout>

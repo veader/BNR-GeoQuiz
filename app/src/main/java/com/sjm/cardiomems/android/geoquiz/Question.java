@@ -1,10 +1,6 @@
 package com.sjm.cardiomems.android.geoquiz;
 
-/**
- * Created by sveader on 8/24/15.
- */
-
-public class Question {
+class Question {
 
     private int mTextResId;
     private boolean mAnswerTrue;

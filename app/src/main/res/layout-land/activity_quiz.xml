@@ -1,32 +1,52 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="24dp" />
+        android:layout_marginTop="40dp"
+        android:padding="24dp"
+        tools:text="Question" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/true_button"
-            android:text="@string/true_button_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/false_button"
-            android:text="@string/false_button_string"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/true_button"
+                android:text="@string/true_button_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/false_button"
+                android:text="@string/false_button_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/cheat_button"
+            android:text="@string/cheat_button_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             />
+
     </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,6 +58,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_left"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/previous_button_string"
             />
 
         <ImageButton
@@ -46,6 +68,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_right"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/next_button_string"
             />
     </RelativeLayout>
 
